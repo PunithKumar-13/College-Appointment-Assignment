@@ -1,3 +1,6 @@
+
+
+
 # College Appointment System (Backend API)
 
 ## Description
@@ -45,46 +48,67 @@ This project is a **backend API** for managing appointments between **students a
 ## Installation
 
 1. Clone the repository
-```bash
-git clone <add url>
-cd college-appointmets
-```
-2.Install dependencies
-```bash
-npm install
 ```
 
-3.Create a .env file in the root directory:
-```bash
+git clone <your-repo-url>
+cd college-appointments
+
+```
+
+2. Install dependencies
+```
+
+npm install
+
+```
+
+3. Create a `.env` file in the root directory:
+```
+
 PORT=5000
 MONGO_URI=YOUR_MONGO_CONNECTION_STRING
 JWT_SECRET=your_super_secret_key
+
 ```
-4.Run the server
-```bash
-npm start 
-or 
+
+4. Run the server
+```
+
+npm start
+
+# or
+
 node server.js
+
 ```
-- Now the server will run on localhost 
+Server runs on `http://localhost:5000`
 
-## Base routes
+---
 
-- /api/auth → register & login
-- /api/availability → add/view professor availability
-- /api/appointments → book, cancel, and view appointments
+## Base Routes
 
-## Running tests
-``` bash
+- `/api/auth` → register & login  
+- `/api/availability` → add/view professor availability  
+- `/api/appointments` → book, cancel, and view appointments  
+
+---
+
+## Running Tests
+
+```
+
 npm test
-```
-- Runs E2E tests validating main user flows:
-- Professor adds availability
-- Student books appointment
-- Professor cancels appointment
-- Student views cancelled appointment
 
-## API Endpoints 
+```
+
+This runs the **E2E automated test** that validates:
+1. Professor adds availability  
+2. Student books appointment  
+3. Another student books another slot  
+4. Professor cancels appointment  
+5. Student verifies the cancelled appointment  
+
+---
 
 ## API Endpoints
 
@@ -98,21 +122,45 @@ npm test
 | **POST** | `/api/appointments/cancel` | Cancel an appointment (by professor) |
 | **GET** | `/api/appointments/my-appointments?studentId=` | Get all appointments for a student |
 
+---
 
+## How to Test End-to-End (E2E)
+
+You can test the full workflow using **Postman** or run the automated test:
+
+### 🧪 Option 1: Using Postman (Manual)
+1. Register Professor → `/api/auth/register`
+2. Register Student → `/api/auth/register`
+3. Login both users → `/api/auth/login`
+4. Add availability (as Professor) → `/api/availability/add`
+5. View available slots (as Student) → `/api/appointments/available-slots`
+6. Book appointment → `/api/appointments/book`
+7. Cancel appointment (as Professor) → `/api/appointments/cancel`
+8. Check student’s appointments → `/api/appointments/my-appointments`
+
+### ⚙️ Option 2: Automated E2E Test (Recommended)
+1. Run the automated test:
+```
+
+npm test
+
+```
+2. The test automatically executes the full flow:
+   - Creates sample users  
+   - Adds availability  
+   - Books and cancels appointments  
+   - Verifies final results  
+
+3. Record this test in Loom for submission (as required in the assignment).
+
+---
 
 ## Notes
 
 - Backend-focused project; no frontend included.  
-- Designed to be fully testable using **Postman** + automated **Jest tests**.  
-- **MongoDB Access**: Make sure your IP address is added to the MongoDB cluster's IP whitelist in Atlas, otherwise the server will not be able to connect.
+- Designed to be fully testable using **Postman** and **Jest automated tests**.  
+- Ensure your **MongoDB Atlas IP is whitelisted** before starting the server.  
 
-
-
-
-
-
-
-
-
-
+---
+```
 
