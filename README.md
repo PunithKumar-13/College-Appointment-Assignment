@@ -89,14 +89,15 @@ npm test
 ## API Endpoints
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST   | /api/auth/register | Register a student or professor |
-| POST   | /api/auth/login | Login and receive JWT token |
-| POST   | /api/availability | Add professor availability |
-| GET    | /api/availability/:professorId | View available slots for a professor |
-| POST   | /api/appointments/book | Book an appointment as a student |
-| PUT    | /api/appointments/cancel/:appointmentId | Cancel an appointment as a professor |
-| GET    | /api/appointments/student/:studentId | View all appointments for a student |
+|--------|-----------|-------------|
+| **POST** | `/api/auth/register` | Register a new user (student or professor) |
+| **POST** | `/api/auth/login` | Login as student or professor and receive a JWT token |
+| **POST** | `/api/availability/add` | Add availability for a professor |
+| **GET** | `/api/appointments/available-slots?professorId=&date=` | Get available slots for a professor on a given date |
+| **POST** | `/api/appointments/book` | Book an appointment (student → professor) |
+| **POST** | `/api/appointments/cancel` | Cancel an appointment (by professor) |
+| **GET** | `/api/appointments/my-appointments?studentId=` | Get all appointments for a student |
+
 
 
 ## Notes
